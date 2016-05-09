@@ -59,18 +59,9 @@ What we will do in next tutorial is when ever we are calling the getName() we wi
 
 ===========================================================================================================================================
 
-Tutorial 27 - Writing Our First Aspect Part 2
+Tutorial 27 - Writing Our First Aspect Part 1
 ----------------------------------------------
 
-We are creating a logging aspect. Aspect a special class. LoggingAspect.
-The methods inside the Aspect are called Advice. AOP terminology. We can apply this advice on other spring container methods.
-For turning a class into Aspect annotate it with @Aspect. That's it. 
 
-Annotations on advice methods:
-@Before : Run our advice methods before any target methods. ex : @Before("execution(public String getName())"); Whenever any getName()
-		  method is run by Spring Container, run the advice method first.
 
-The above method will run for every getName() method in our Spring Application.		  
-
-We need to make sure that the spring.xml file is having the tag <aop:aspectj-autoproxy> and we give the aspect bean definition.
 ===========================================================================================================================================
