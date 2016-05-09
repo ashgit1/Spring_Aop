@@ -74,3 +74,43 @@ The above method will run for every getName() method in our Spring Application.
 
 We need to make sure that the spring.xml file is having the tag <aop:aspectj-autoproxy> and we give the aspect bean definition.
 ===========================================================================================================================================
+
+Tutorial 28 - Pointcuts and Wildcard Expressions
+------------------------------------------------
+
+If we need to call advice on a specific methods provide the full path of the method from the base package.
+ex: @Before("execution(public String com.ashish.aoptutorial.model.Circle.getName())")
+	public void loggingAdvice(){}
+
+1. One Advice applied to different points:
+------------------------------------------
+
+ex: Logging advice should run before all the getters of the application irrespective of their return type.
+We can do this with the help of wild cards. It applies before all getters of all type and public methods.
+@Before("execution(public * get*())")
+public void loggingAdvice(){}
+
+ex: should not worry about the access modifier of the methods:
+@Before("execution(* get*())")
+public void loggingAdvice(){}
+
+ex: should apply to all getters with 1 or arguments:
+@Before("execution(* get*(*))")
+public void loggingAdvice(){}
+
+ex: should apply to all getters with 0 or more arguments:
+@Before("execution(* get*(..))")
+public void loggingAdvice(){}
+
+In the above ways we can apply single advice to different points in our code.
+
+2. Multiple advices onto a single point:
+----------------------------------------
+
+For this we can create another advice methods and configure to run before the target methods. This will increase the reduncancy as we keep
+on writing the same configuration multiple times. To avoid this we can create "POINTCUTS".
+A Pointcut is a point in the app where you can cut in some code.
+Once the pointcut is created we can refer it to all the advices and multiple advices can run on same points in the app.
+
+
+===========================================================================================================================================
