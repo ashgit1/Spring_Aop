@@ -1,0 +1,48 @@
+===========================================================================================================================================
+ Tutorial 24 - Introduction to AOP:
+ ----------------------------------
+
+ AOP is just not a feature of Spring it actually a programming model.
+ Problem with Functional Programming : We need to break the complexity in functions.
+ 
+ Problem with OOP: Not all the task we need to do can be classified as Objects. 
+ ex: logger() function in each of the class A, B and C.
+ 	
+ 	*	Too many relationships to the cross-cutting object. 
+ 	*	Code is still required in all the methods.
+ 	*	Cannot be changed all at once.
+
+Cross Cutting Concerns:
+-----------------------
+
+Some functionalities which needs to be used by different objects and they may be not a part of your problem domain. Could be infrastructure 
+related, security related and so on.
+ex: Logging, Transactions, Security and so on.
+
+Solution to above problem:
+--------------------------
+
+Instead of creating new Class for Logger we create an aspect. It can be considered as a Class with special priveleges.
+* Inside the aspect we will do 'Aspect Configuration' telling to which all Classes or methods() this aspect applies to. This is difference
+between an OOP and AOP.
+
+Wrapping Aspect around methods():
+---------------------------------
+Aspect Code --> Target methods
+
+Steps in AOP:
+-------------
+
+1. Identify and write the Aspects.
+2. Configure where the aspects apply.
+
+===========================================================================================================================================
+
+ Tutorial 25 : Setting up AOP
+ -----------------------------
+
+ Dependencies:- 
+* We need the Spring depency jars as usual for any spring project.
+* AspectJ : aspectjrt.jar, aspectjweaver.jar, aopalliance.jar, cgilib.jar, asm-3.3.1.jar
+
+===========================================================================================================================================
