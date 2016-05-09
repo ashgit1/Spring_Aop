@@ -114,3 +114,38 @@ Once the pointcut is created we can refer it to all the advices and multiple adv
 
 
 ===========================================================================================================================================
+
+Tutorial 29 -  A Few More Pointcut Expressions
+----------------------------------------------
+
+If we need to apply pointcut for all the methods of circle only, we use "within" inside Pointcut. A within includes all the methods of that class.
+ex: @Pointcut("within(com.ashish.aoptutorial.model.Circle)")
+	public void allCircleMethods()
+
+ex: pointcut for all the methods of a package:
+@Pointcut("within(com.ashish.aoptutorial.model.*)")
+public void allCircleMethods()
+
+ex: pointcut for all the sub-packages of a given package:
+@Pointcut("within(com.ashish.aoptutorial.model..*)")
+public void allCircleMethods()
+
+Note: within() takes class name or wild card of claass names as parameter, whereas 
+	  execution() takes method names or wild card of method names as parameter
+	  args() takes class name or wild card of claass names as parameter
+
+------
+|args|
+------
+
+We can create a pointcut for methods that take certain parameters. ex: We can create pointcut for all the methods that take Circle as parameter by using args which takes class name as parameter.
+@Pointcut(args(com.ashish.aoptutorial.model.Circle))
+public void allMethodsCircleAsParameter(){}
+
+We can also use logical operators between pointcuts in Advice. ex : Execute an advice method when both the pointcuts are true.
+@Before("allGetters() && allCircleMethods()")
+public void LoggingAdvice(){}
+
+This logging advice will run for getters which are part of Circle.
+
+===========================================================================================================================================

@@ -1,0 +1,26 @@
+package com.ashish.aoptutorial;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.ashish.aoptutorial.model.Circle;
+import com.ashish.aoptutorial.service.ShapeService;
+
+public class AopMain {
+
+	@SuppressWarnings({ "resource" })
+	public static void main(String[] args) {
+
+		ApplicationContext context = new ClassPathXmlApplicationContext("aoptutspring.xml");
+		ShapeService shapeService = context.getBean("shapeService", ShapeService.class);
+		
+		System.out.println(shapeService.getCircle().getName());
+		//System.out.println(shapeService.getTriangle().getName());
+		
+		/*ShapeService service = context.getBean("shapeService", ShapeService.class);
+		service.setCircle(new Circle());
+		*/// args() demo
+		
+	}
+
+} 
