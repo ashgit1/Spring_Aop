@@ -149,3 +149,37 @@ public void LoggingAdvice(){}
 This logging advice will run for getters which are part of Circle.
 
 ===========================================================================================================================================
+
+Tutorial 30 - JoinPoints and Advice Arguments
+---------------------------------------------
+
+JointPoint: If we need to know which menthod() triggered the advice, we can use joinpoints. It means all the points in your code where you can apply advice. The below advice will run the advice irrespective of getters() and setters()
+
+@Before("allCircleMethods()")
+public void LoggingAdvice(){}
+
+@Pointcut("within(com.ashish.aoptutorial.model.Circle)")
+public void allCircleMethods(){}
+	
+Note:
+-----
+
+If we need to know which method triggered the advice use JOINPOINT. In Spring AOP we apply joinpoints to methods only. In AspectJ we can 
+apply to data members also. (Advance Topic).
+
+@Before("allCircleMethods()")
+public void LoggingAdvice(JoinPoint joinPoint){
+System.out.println("Circle Advice Run..." + joinPoint.toString());}
+
+joinPoint.toString() : gives the name of the methods : execution(String com.ashish.aoptutorial.model.Circle.getName())
+
+joinPoint.getTarget() : gets the class name on which this advice is run. Once we get that object (after typecasting), we can use that
+						object for other purposes. (Cool Feature)
+
+Pointcut which to all the methods that take String as args and need to print the argument.
+ex: 
+@Before("args(name)")
+public void stringArgumentAdvice(String name){
+	System.out.println("Method that takes String as parameter. Parameter : " + name);
+}
+===========================================================================================================================================
