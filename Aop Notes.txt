@@ -258,3 +258,23 @@ Thus this advice will run for all such methods which are annotated with @Loggabl
 
 
 ===========================================================================================================================================
+
+Tutorial 34 - AOP XML configuration:
+------------------------------------
+
+Whatever configuration we did for AOP was done through Annotation. It can also be done through xml file.
+The <aop:config/> tag contains all the configuration of AOP in spring.xml file.
+Next step is to define the aspect by using <aop:aspect/>. 
+Next define pointcut inside the aspect tage.
+Next we define the Around advice target at the define pointcut and pass the method name.
+
+<bean name="loggingAspect" class="com.ashish.aoptutorial.aspect.LoggingAspect" />
+
+<aop:config>
+	<aop:aspect id="loggingAspect" ref="loggingAspect">
+		<aop:pointcut expression="execution(* get*())" id="allGetters"/>
+		<aop:around pointcut-ref="allGetters" method="aroundCustomAnnotationAdvice"/>
+	</aop:aspect>
+</aop:config>
+
+===========================================================================================================================================
