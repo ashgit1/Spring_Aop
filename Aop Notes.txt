@@ -153,7 +153,7 @@ This logging advice will run for getters which are part of Circle.
 Tutorial 30 - JoinPoints and Advice Arguments
 ---------------------------------------------
 
-JointPoint: If we need to know which menthod() triggered the advice, we can use joinpoints. It means all the points in your code where you can apply advice. The below advice will run the advice irrespective of getters() and setters()
+JointPoint: If we need to know which method() triggered the advice, we can use joinpoints. It means all the points in your code where you can apply advice. The below advice will run the advice irrespective of getters() and setters()
 
 @Before("allCircleMethods()")
 public void LoggingAdvice(){}
@@ -182,4 +182,35 @@ ex:
 public void stringArgumentAdvice(String name){
 	System.out.println("Method that takes String as parameter. Parameter : " + name);
 }
+===========================================================================================================================================
+
+Spring Tutorial 31 - After Advice Types:
+----------------------------------------
+
+Advice methods() gets executed only for the calls which we make in the program not for the calls which the spring container makes while
+initializing member variables.
+
+What if we want to execute any advice after the target methods are done. We can do it by annotatiung it with '@After'. All the things 
+which we learned for 'Before' are similar for 'After'. 
+
+After advice runs even is the target methods throws exception. Its like whether target method has ran successfully or not it will run.
+It's also called 'after finally' due to the above nature.
+
+If we want to run our advice only when the target method runs successfully and returns we should be using '@AfterReturning'.
+
+If we want to run our advice even if the target methods throws exception, we should use '@AfterThrowing' annotation.
+
+If we want get the object(String in this case) which is returned by the target method in our advice, we need to use 
+'@AfterReturning(returning="objectname")'
+annotation. 
+ex: @AfterReturning(pointcut="args(name)", returning="returnString")
+	public void stringArgumentAdvice(String name, String returnString){}
+
+Similarly if we want to return the exception object to the advice we use @AfterThrowing(throwing="exceptionObject")
+ex: @AfterThrowing(pointcut="args(exception)", throwing="exceptionObject")
+	public void exceptionAdvice(String exception, Exception exceptionObject){}
+
+
+
+
 ===========================================================================================================================================
