@@ -278,3 +278,15 @@ Next we define the Around advice target at the define pointcut and pass the meth
 </aop:config>
 
 ===========================================================================================================================================
+
+Tutorial 35 - Understanding AOP Proxies:
+----------------------------------------
+
+Here we try to implement spring AOP by using primitive way. We create a FactoryService class which has a factory method.
+We create a ShapeServiceProxy class which extends ShapeService class. 
+In the factory method we return the instance of ShapeServiceProxy instead of ShapeService class. 
+We override the method in the ShapeServiceProxy. Before returning the Object we execute a logging advice method().
+In similar way Spring AOP creates proxy classes to make call in between target method execution to call the advice methods.
+ex : Go through the code of this tutorial. It's very good.
+
+===========================================================================================================================================
