@@ -241,3 +241,20 @@ ex: @Around("allGetter()")
 Once we get the object returned by the target method we can use and manipulate it as per our wish. This is one more advantage.
 
 ===========================================================================================================================================
+
+Tutorial 33 - Naming Conventions and Custom Advice Annotations:
+---------------------------------------------------------------
+
+This tutorial deals with naming conventions for PointCut and Advices which we have alreay done in the previou tutorials.
+ex : To apply a pointcut to all the service methods. It will to all methods of service package irrespective of args or no args method().
+@Pointcut("execution(* com.ashish.aoptutorial.service.*.*(..))")
+public void allServiceMethods(){}
+
+How to apply custom annotation to advice ?
+We do it by creating a annotation(@Loggable) and then annotate the advice with the created annotation by using 
+@Around("@annotation(full path of Loggable annotation)").
+Then we will annotate all desired methods with @Loggable.
+Thus this advice will run for all such methods which are annotated with @Loggable. 
+
+
+===========================================================================================================================================
